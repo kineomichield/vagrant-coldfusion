@@ -56,8 +56,8 @@ sudo printf "/.*/         ACCEPT\n" | sudo tee /etc/postfix/mydestinations
 
 rm ~/Maildir/* -rf
 
-sudo cp /etc/squirrelmail/apache.conf /etc/apache2/sites-available/squirrelmail -f
-sudo ln -s /etc/apache2/sites-available/squirrelmail /etc/apache2/sites-enabled/squirrelmail -f
+#sudo cp /etc/squirrelmail/apache.conf /etc/apache2/sites-available/squirrelmail -f
+#sudo ln -s /etc/apache2/sites-available/squirrelmail /etc/apache2/sites-enabled/squirrelmail -f
 
 # Fonts
 if [ -d /usr/share/fonts/truetype/msttcorefonts/ ]; then
@@ -98,6 +98,7 @@ else
 	sudo mv /tmp/services-config.xml /opt/coldfusion10/cfusion/wwwroot/WEB-INF/flex/services-config.xml
 
 	sudo /opt/coldfusion10/cfusion/runtime/bin/wsconfig -ws Apache -dir /etc/apache2 -v -script /usr/sbin/apache2ctl -bin /usr/sbin/apache2
+fi
 
 	if [[ -f /vagrant/files/downloads/$jretarfile ]]; then
 		cp /vagrant/files/downloads/$jretarfile ./jre.tar.gz -f
@@ -107,7 +108,6 @@ else
 	sudo tar -xzvf jre.tar.gz -C /opt/
 
 
-fi
 
 # updates
 wget -q http://download.macromedia.com/pub/coldfusion/10/cf10_mdt_updt.jar -O /tmp/cf10_mdt_updt.jar
@@ -130,7 +130,7 @@ sudo printf "ServerName localhost\n<VirtualHost *:80>\nServerAdmin men@rhinofly.
 sudo printf "NameVirtualHost *:80\nNameVirtualHost *:443\nListen 80\nListen 443\n" | sudo tee /etc/apache2/ports.conf
 
 sudo cp /vagrant/files/apache2/sites-enabled/001-basic.conf /etc/apache2/sites-enabled/
-sudo cp /vagrant/files/apache2/static_files.conf /etc/apache2/conf.d/
+sudo cp /vagrant/files/apache2/static_files.conf /etc/apache2/conf-enabled/
 
 if [ -d /etc/apache2/ssl/ ]; then
 	echo -e "$COL_GREEN * apache/ssl exists $COL_RESET"

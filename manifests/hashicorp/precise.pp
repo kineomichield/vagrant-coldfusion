@@ -56,15 +56,15 @@ package { "postfix-pcre":
     require => Package["postfix"]
 }
 
-package { "dovecot-postfix":
-    ensure => "installed",
-    require => Package["postfix-pcre"]
-}
+#package { "dovecot-postfix":
+#    ensure => "installed",
+#    require => Package["postfix-pcre"]
+#}
 
-package { "squirrelmail":
-    ensure => "installed",
-    require => Package["apache2", "dovecot-postfix"]
-}
+#package { "squirrelmail":
+#    ensure => "installed",
+#    require => Package["apache2", "dovecot-postfix"]
+#}
 
 package { "openjdk-7-jdk":
     ensure => "installed",
