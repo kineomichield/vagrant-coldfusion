@@ -12,7 +12,7 @@ if ! File.exists?('./files/downloads/ColdFusion_10_WWEJ_linux64.bin')
   exit 1
 end
 
-if ! File.exists?('./files/downloads/ColdFusion_10_WWEJ_linux64.bin')
+if ! File.exists?('./files/downloads/jre-7u15-linux-x64.tar.gz')
   puts 'Java 7 installer could not be found!'
   puts "Please run:\n  wget https://www.dropbox.com/s/96w4ssf89uzx570/jre-7u15-linux-x64.tar.gz?dl=1 -O ./files/downloads/jre-7u15-linux-x64.tar.gz"
   exit 1
@@ -23,8 +23,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # for doing git clones
   config.ssh.forward_agent = true
 
-  config.vm.box = "hashicorp/precise64"
-  config.vm.box_url = "https://vagrantcloud.com/hashicorp/precise64"
+  config.vm.box = "ubuntu/trusty64"
 
   config.vm.network :private_network, ip: "10.0.0.10"
   config.nfs.map_gid = Process.gid
